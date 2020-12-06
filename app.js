@@ -9,6 +9,11 @@ client.connect(err => {
   console.log("hi");
 })*/
 
+'use strict';
+
+const express = require('express');
+const app = express();
+
 const mongoose = require('mongoose')
 
 const url ="mongodb+srv://RoseM:FamiliarVoice@familiarvoicecluster.eij5d.mongodb.net/hi?retryWrites=true&w=majority";
@@ -25,3 +30,6 @@ mongoose.connect(url,connectionParams)
     .catch( (err) => {
         console.error(`Error connecting to the database. \n${err}`);
     })
+    app.use(express.static('public'));
+    const PORT = process.env.PORT || 8000;
+    app.listen(PORT);
